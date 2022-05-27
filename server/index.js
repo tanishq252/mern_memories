@@ -2,10 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongosse from 'mongoose';
+import dotenv from 'dotenv';
 
 // initializing the app
 const app  = express();
-
+dotenv.config();
 // ---------------------------------
 // routes
 import postRoutes from './routes/posts.js';
@@ -27,11 +28,9 @@ app.get('/', (req, res)=>{
 })
 
 
-// connecting the mongodb
-const connectionURL = "mongodb+srv://tanishq777:tanishq777@cluster0.lzgyb.mongodb.net/fullstackapp?retryWrites=true&w=majority"
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000
 
-mongosse.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: true})
+mongosse.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => app.listen(PORT, ()=>console.log(`running on PORT ${PORT}`)))
 .catch((error)=>console.log(error));
 
