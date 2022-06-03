@@ -52,7 +52,7 @@ export const deletePost = async(req, res) => {
     }
 }
 
-// like
+// like (update one)
 export const likePost = async (req, res) => {
     const {id} = req.params;
 
@@ -62,4 +62,24 @@ export const likePost = async (req, res) => {
     const updatedPost = await PostMessage.findByIdAndUpdate(id, {likeCount: post.likeCount+1} , {new:true})
 
     res.json(updatedPost);
+}
+
+/////// additional queries
+// insert
+export const insert = async(req, res) =>{
+    const newPost = PostMessage({
+        title: "trial",
+        message: "trial",
+        creator: "SY7",
+        tags: ["trial", "dbms"],
+        likeCount: 100,
+        createdAt: new Date(),
+    });
+
+    try{
+        PostMessage.save(newPost);
+        res.status(201).json({message: "inserted"})
+    }catch(e){
+        res.status(404).json({message: e})
+    }
 }
