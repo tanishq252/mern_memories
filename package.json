@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "gapi-script": "^1.2.0"
   }
 }
