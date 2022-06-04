@@ -10,6 +10,7 @@ dotenv.config();
 // ---------------------------------
 // routes
 import postRoutes from './routes/posts.js';
+import authRoutes from './routes/auth.js';
 
 
 // cross origin resource sharing
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 
 
 app.use('/posts', postRoutes); 
+app.use('/auth', authRoutes);
 //every route inside posts will start with /post
 
 app.get('/', (req, res)=>{
