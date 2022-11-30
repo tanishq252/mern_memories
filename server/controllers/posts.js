@@ -84,6 +84,8 @@ export const likePost = async (req, res) => {
     res.json(updatedPost);
 }
 
+
+
 // /////// additional queries
 // // insert
 // export const insert = async(req, res) =>{
